@@ -1,0 +1,72 @@
+﻿<Window x:Class="DrenaSys.Windows.EquacoesDeChuva"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DrenaSys"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:resources="clr-namespace:DrenaSys.Properties"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"       
+        xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="DrenaSys v 0.01" Height="733" Width="1117" WindowStartupLocation="CenterScreen" Icon="pack://siteoforigin:,,,/Resources/MainIcon.ico" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
+    <Grid Background="{StaticResource PrimaryHueLightBrush}" Margin="0">
+        <GroupBox Header="Selecione a equação de chuva desejada" HorizontalAlignment="Left" Height="463" Margin="10,10,0,0" VerticalAlignment="Top" Width="874">
+            <gmaps:GMapControl Name="mapView" Zoom="13" MaxZoom="24" MinZoom="1"></gmaps:GMapControl>
+        </GroupBox>
+        <GroupBox Header="Parâmetros para tempo de concentração" HorizontalAlignment="Left" Height="187" Margin="10,492,0,0" VerticalAlignment="Top" Width="254">
+            <Grid Height="171" Margin="0,-8,0,-61" VerticalAlignment="Top" Width="244">
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txtTalv" HorizontalAlignment="Left" Height="42" Margin="43,10,0,0" materialDesign:HintAssist.Hint="Talvegue principal (km)" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txtDesniv" HorizontalAlignment="Left" Height="35" Margin="44,57,0,0" materialDesign:HintAssist.Hint="Desnível máximo (m)" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="143"/>
+
+                <ComboBox Name="cboxMetodos" HorizontalAlignment="Left" Margin="44,111,0,0" VerticalAlignment="Top" Width="142" materialDesign:HintAssist.Hint="Método de cálculo" HorizontalContentAlignment="Center">
+
+                    <ComboBoxItem HorizontalContentAlignment="Center">Kirpich</ComboBoxItem>
+                    <ComboBoxItem HorizontalContentAlignment="Center">Kirpich modificada</ComboBoxItem>
+                </ComboBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Parâmetros I.D.F obtidos no mapa" HorizontalAlignment="Left" Height="187" Margin="286,492,0,0" VerticalAlignment="Top" Width="598">
+            <Grid Height="102" VerticalAlignment="Top" Width="583">
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True" Name="pk" HorizontalAlignment="Left" Height="45" Margin="10,10,0,0" materialDesign:HintAssist.Hint="Parâmetro k" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="pm" HorizontalAlignment="Left" Height="39" Margin="10,63,0,0" materialDesign:HintAssist.Hint="Parâmetro m" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="to" HorizontalAlignment="Left" Height="42" Margin="171,60,0,0" materialDesign:HintAssist.Hint="Parâmetro to" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="n" HorizontalAlignment="Left" Height="45" Margin="171,10,0,0" materialDesign:HintAssist.Hint="Parâmetro n" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="nomeCidade" HorizontalAlignment="Left" Height="45" Margin="334,10,0,0" materialDesign:HintAssist.Hint="Nome da estação selecionada" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="239"/>
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="txtLat" HorizontalAlignment="Left" Height="42" Margin="334,60,0,0" materialDesign:HintAssist.Hint="Latitude" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="111"/>
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="txtLon" HorizontalAlignment="Left" Height="42" Margin="471,60,0,0" materialDesign:HintAssist.Hint="Longitude" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="102"/>
+            </Grid>
+        </GroupBox>
+        <StackPanel HorizontalAlignment="Left" Height="636" Margin="898,10,0,0" VerticalAlignment="Top" Width="186">
+            <Button Click="BtnCalc_Click" Name="btnCalc" d:LayoutOverrides="Height" Margin="5 10 5 0">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Calculator" VerticalAlignment="Center" Height="25" Width="25"/>
+                    <TextBlock Text="Calcular" VerticalAlignment="Center"  Margin="10 0 0 0"/>
+                </StackPanel>
+            </Button>
+            <Button Name="btnReset" d:LayoutOverrides="Height" Margin="5 10 5 0" Click="BtnReset_Click">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Broom" VerticalAlignment="Center" Height="25" Width="25"/>
+                    <TextBlock Text="Resetar" VerticalAlignment="Center"  Margin="10 0 0 0"/>
+                </StackPanel>
+            </Button>
+            <Button Name="btnExportReport" d:LayoutOverrides="Height" Margin="5 10 5 0">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Export" VerticalAlignment="Center" Height="25" Width="25"/>
+                    <TextBlock Text="Exportar relatório" VerticalAlignment="Center"  Margin="5 0 0 0"/>
+                </StackPanel>
+            </Button>
+            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5 30 0 5" materialDesign:HintAssist.Hint="Tempo de concentração (min)" Foreground="Black" HorizontalContentAlignment="Center" IsEnabled="False"/>
+            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,30,0,5" materialDesign:HintAssist.Hint="Precipitação calculada (mm/h)" Foreground="Black" HorizontalAlignment="Right" IsEnabled="False" Width="181"/>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

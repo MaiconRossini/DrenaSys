@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DrenaSys.Windows;
+using System;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
@@ -26,19 +27,12 @@ namespace DrenaSys
             InitializeComponent();
         }
 
-        private void TreeGrupoEstudosHidrologicos_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void TreeChildEquacoes_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
- 
-        }
-
-        private void TreeChildEquacoes_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-           
-        }
-
-        private void TreeChildHidrograma_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
+            EquacoesDeChuva eq = new EquacoesDeChuva();
+            eq.Show();
+            
         }
     }
 }
+
