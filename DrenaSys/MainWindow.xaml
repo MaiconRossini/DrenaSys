@@ -26,7 +26,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem Name="treeGumbel" Focusable="False">
+                <TreeViewItem Name="treeGumbel" Focusable="False" MouseLeftButtonUp="TreeGumbel_MouseLeftButtonUp">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Number9Box" Foreground="Blue" Width="25" Height="25" Padding="0"></materialDesign:PackIcon>

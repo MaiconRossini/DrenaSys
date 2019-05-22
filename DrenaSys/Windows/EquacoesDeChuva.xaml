@@ -66,7 +66,7 @@
 
         </StackPanel>
         <GroupBox Header="Parâmetros estatísticos" HorizontalAlignment="Left" Height="116" Margin="898,563,0,0" VerticalAlignment="Top" Width="186">
-            <TextBox Name="txtTr" Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="False" HorizontalAlignment="Left" Height="38" Margin="0,10,0,0" materialDesign:HintAssist.Hint="Tempo de retorno (anos)" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="168"/>
+            <TextBox Name="txtTr" Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="False" HorizontalAlignment="Left" Height="38" Margin="0,10,0,0" materialDesign:HintAssist.Hint="Tempo de retorno (anos)" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="168" RenderTransformOrigin="0.378,0.513"/>
         </GroupBox>
 
     </Grid>

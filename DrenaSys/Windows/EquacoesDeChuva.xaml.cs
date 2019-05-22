@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -182,23 +183,32 @@ namespace DrenaSys.Windows
         }
         private void BtnCalc_Click(object sender, RoutedEventArgs e)
         {
-            if (this.IsDataCorrectlyInserted() == true)
-            {
-                switch (cboxMetodos.Text)
+            Regex reg = new Regex(@"[.;!@#$%^&*()_+/*-+?><:{ }a - z A - Z]");
+            Match match = reg.Match(txtTalv.Text + txtDesniv.Text + txtTr.Text);
+            if (!match.Success){
+                if (this.IsDataCorrectlyInserted() == true)
                 {
-                    case "Kirpich":
-                        txtTempoFinal.Text = Convert.ToString(calculateTcByKirpich(txtTalv.Text, txtDesniv.Text) * 60);
-                        txtPrecipitacaoFinal.Text = Convert.ToString(this.calculateRain());
-                        break;
-                    case "Kirpich modificada":
-                        txtTempoFinal.Text = Convert.ToString(calculateTcByKirpichModified(txtTalv.Text, txtDesniv.Text) * 60);
-                        txtPrecipitacaoFinal.Text = Convert.ToString(this.calculateRain());
-                        break;
+                    switch (cboxMetodos.Text)
+                    {
+                        case "Kirpich":
+                            txtTempoFinal.Text = Convert.ToString(calculateTcByKirpich(txtTalv.Text, txtDesniv.Text) * 60);
+                            txtPrecipitacaoFinal.Text = Convert.ToString(this.calculateRain());
+                            break;
+                        case "Kirpich modificada":
+                            txtTempoFinal.Text = Convert.ToString(calculateTcByKirpichModified(txtTalv.Text, txtDesniv.Text) * 60);
+                            txtPrecipitacaoFinal.Text = Convert.ToString(this.calculateRain());
+                            break;
+                    }
+                }
+                else
+                {
+                    System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Existem campos sem informação, certifique-se de inserir os dados necessários.", "Erro", MessageBoxButtons.OK);
                 }
             } else
             {
-                System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Existem campos sem informação, certifique-se de inserir os dados necessários.", "Erro", MessageBoxButtons.OK);
+                System.Windows.Forms.MessageBox.Show("Foram detectados caracteres ilegais nos campos, em campos numéricos somente são permitidos números e virgulas como separador");
             }
+ 
 
 
             //if (cboxMetodos.Text.Equals("Kirpich"))
@@ -219,5 +229,28 @@ namespace DrenaSys.Windows
                 return false;
             } else return true;
         }
+
+        public void CheckLetter(Object sender, KeyPressEventArgs e)
+        {
+            //if (!char.IsLetter(e.KeyChar)||!char.IsNumber(e.KeyChar))
+            //{
+            //    e.Handled = true;
+            //}
+            if ( e.KeyChar == (char)Keys.Back || e.KeyChar == ',' || char.IsNumber(e.KeyChar))
+            {
+
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space will be blocked
+                e.Handled = true;
+            }
+
+        }
+
+
     }
-}
+    }
+

@@ -1,0 +1,23 @@
+﻿<Window x:Class="DrenaSys.Windows.MetodoDeGumbel"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DrenaSys"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:resources="clr-namespace:DrenaSys.Properties"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"       
+        xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="DrenaSys v 0.01" Height="733" Width="1117" WindowStartupLocation="CenterScreen" Icon="pack://siteoforigin:,,,/Resources/MainIcon.ico" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
+    <Grid>
+        
+    </Grid>
+</Window>

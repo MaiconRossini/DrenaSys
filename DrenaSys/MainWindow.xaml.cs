@@ -33,6 +33,12 @@ namespace DrenaSys
             eq.Show();
             
         }
+
+        private void TreeGumbel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MetodoDeGumbel mg = new MetodoDeGumbel();
+            mg.Show();
+        }
     }
 }
 
