@@ -2,9 +2,11 @@
 using GMap.NET.WindowsPresentation;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +14,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -110,10 +113,9 @@ namespace DrenaSys.Windows
                 pk.Text = Convert.ToString(eq.k);
                 pm.Text = Convert.ToString(eq.m);
                 to.Text = Convert.ToString(eq.to);
-                n.Text = Convert.ToString(eq.n);
+                pn.Text = Convert.ToString(eq.n);
                 nomeCidade.Text = Convert.ToString(eq.local);
-                txtLat.Text = Convert.ToString(eq.lat);
-                txtLon.Text = Convert.ToString(eq.lon);
+
 
             }
             else if (dialogResult == System.Windows.Forms.DialogResult.Yes)
@@ -127,10 +129,11 @@ namespace DrenaSys.Windows
             pk.Text = "";
             pm.Text = "";
             to.Text = "";
-            n.Text = "";
+            pn.Text = "";
             txtDesniv.Text = "";
             txtTalv.Text = "";
             cboxMetodos.Text = "";
+            txtTr.Text = "";
         }
 
         private void BtnReset_Click(object sender, RoutedEventArgs e)
@@ -164,15 +167,37 @@ namespace DrenaSys.Windows
             double delta = Convert.ToDouble(delt);
             return Math.Round((1.42 * Math.Pow((Math.Pow(talvegue, 3) / delta), 0.385)), 3);
         }
+        
+        private double calculateRain()
+        {
+            double k = Convert.ToDouble(pk.Text);
+            double Tr = Convert.ToDouble(txtTr.Text);
+            double m = Convert.ToDouble(pm.Text);
+            double n = Convert.ToDouble(pn.Text);
+            double t = Convert.ToDouble(txtTempoFinal.Text);
+            double To = Convert.ToDouble(to.Text);
 
+            double precipitacao = Math.Round((k * Math.Pow(Tr,m))/Math.Pow((t+To),n),3);
+            return precipitacao;
+        }
         private void BtnCalc_Click(object sender, RoutedEventArgs e)
         {
             if (this.IsDataCorrectlyInserted() == true)
             {
-                System.Windows.Forms.MessageBox.Show("todos os campos tem valor");
+                switch (cboxMetodos.Text)
+                {
+                    case "Kirpich":
+                        txtTempoFinal.Text = Convert.ToString(calculateTcByKirpich(txtTalv.Text, txtDesniv.Text) * 60);
+                        txtPrecipitacaoFinal.Text = Convert.ToString(this.calculateRain());
+                        break;
+                    case "Kirpich modificada":
+                        txtTempoFinal.Text = Convert.ToString(calculateTcByKirpichModified(txtTalv.Text, txtDesniv.Text) * 60);
+                        txtPrecipitacaoFinal.Text = Convert.ToString(this.calculateRain());
+                        break;
+                }
             } else
             {
-                System.Windows.Forms.MessageBox.Show("Insira todas as informações necessárias!", "Alerta", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                System.Windows.Forms.DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Existem campos sem informação, certifique-se de inserir os dados necessários.", "Erro", MessageBoxButtons.OK);
             }
 
 
@@ -189,7 +214,7 @@ namespace DrenaSys.Windows
 
         private bool IsDataCorrectlyInserted()
         {
-            if (txtDesniv.Text.Equals("") || txtTalv.Text.Equals("") || pk.Text.Equals("") || pm.Text.Equals("") || to.Text.Equals("") || n.Text.Equals(""))
+            if (txtDesniv.Text.Equals("") || txtTalv.Text.Equals("") || pk.Text.Equals("") || pm.Text.Equals("") || to.Text.Equals("") || pn.Text.Equals("") || txtTr.Text.Equals(""))
             {
                 return false;
             } else return true;

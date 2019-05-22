@@ -22,7 +22,15 @@
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Water" Foreground="Blue" Width="25" Height="25" Padding="0"></materialDesign:PackIcon>
-                            <TextBlock Margin="10 0 0 0" VerticalAlignment="Center">Equações de chuva (I.D.F)</TextBlock>
+                            <TextBlock Margin="10 0 0 0" VerticalAlignment="Center">Equações de chuva</TextBlock>
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem Name="treeGumbel" Focusable="False">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Number9Box" Foreground="Blue" Width="25" Height="25" Padding="0"></materialDesign:PackIcon>
+                            <TextBlock Margin="10 0 0 0" VerticalAlignment="Center">Método de Gumbel</TextBlock>
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>

@@ -17,7 +17,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="DrenaSys v 0.01" Height="733" Width="1117" WindowStartupLocation="CenterScreen" Icon="pack://siteoforigin:,,,/Resources/MainIcon.ico" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
-    <Grid Background="{StaticResource PrimaryHueLightBrush}" Margin="0">
+    <Grid Margin="0">
         <GroupBox Header="Selecione a equação de chuva desejada" HorizontalAlignment="Left" Height="463" Margin="10,10,0,0" VerticalAlignment="Top" Width="874">
             <gmaps:GMapControl Name="mapView" Zoom="13" MaxZoom="24" MinZoom="1"></gmaps:GMapControl>
         </GroupBox>
@@ -38,13 +38,11 @@
                 <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True" Name="pk" HorizontalAlignment="Left" Height="45" Margin="10,10,0,0" materialDesign:HintAssist.Hint="Parâmetro k" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
                 <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="pm" HorizontalAlignment="Left" Height="39" Margin="10,63,0,0" materialDesign:HintAssist.Hint="Parâmetro m" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
                 <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="to" HorizontalAlignment="Left" Height="42" Margin="171,60,0,0" materialDesign:HintAssist.Hint="Parâmetro to" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
-                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="n" HorizontalAlignment="Left" Height="45" Margin="171,10,0,0" materialDesign:HintAssist.Hint="Parâmetro n" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
-                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="nomeCidade" HorizontalAlignment="Left" Height="45" Margin="334,10,0,0" materialDesign:HintAssist.Hint="Nome da estação selecionada" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="239"/>
-                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="txtLat" HorizontalAlignment="Left" Height="42" Margin="334,60,0,0" materialDesign:HintAssist.Hint="Latitude" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="111"/>
-                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="txtLon" HorizontalAlignment="Left" Height="42" Margin="471,60,0,0" materialDesign:HintAssist.Hint="Longitude" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="102"/>
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="pn" HorizontalAlignment="Left" Height="45" Margin="171,10,0,0" materialDesign:HintAssist.Hint="Parâmetro n" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="nomeCidade" HorizontalAlignment="Left" Height="45" Margin="334,34,0,0" materialDesign:HintAssist.Hint="Nome da estação selecionada" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="239"/>
             </Grid>
         </GroupBox>
-        <StackPanel HorizontalAlignment="Left" Height="636" Margin="898,10,0,0" VerticalAlignment="Top" Width="186">
+        <StackPanel HorizontalAlignment="Left" Height="294" Margin="898,10,0,0" VerticalAlignment="Top" Width="186">
             <Button Click="BtnCalc_Click" Name="btnCalc" d:LayoutOverrides="Height" Margin="5 10 5 0">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Calculator" VerticalAlignment="Center" Height="25" Width="25"/>
@@ -63,10 +61,13 @@
                     <TextBlock Text="Exportar relatório" VerticalAlignment="Center"  Margin="5 0 0 0"/>
                 </StackPanel>
             </Button>
-            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5 30 0 5" materialDesign:HintAssist.Hint="Tempo de concentração (min)" Foreground="Black" HorizontalContentAlignment="Center" IsEnabled="False"/>
-            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,30,0,5" materialDesign:HintAssist.Hint="Precipitação calculada (mm/h)" Foreground="Black" HorizontalAlignment="Right" IsEnabled="False" Width="181"/>
+            <TextBox Name="txtTempoFinal" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="5 30 0 5" materialDesign:HintAssist.Hint="Tempo de concentração (min)" Foreground="Black" HorizontalContentAlignment="Center" IsEnabled="False"/>
+            <TextBox Name="txtPrecipitacaoFinal" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,30,0,5" materialDesign:HintAssist.Hint="Precipitação calculada (mm/h)" Foreground="Black" HorizontalAlignment="Right" IsEnabled="False" Width="181" HorizontalContentAlignment="Center"/>
 
         </StackPanel>
+        <GroupBox Header="Parâmetros estatísticos" HorizontalAlignment="Left" Height="116" Margin="898,563,0,0" VerticalAlignment="Top" Width="186">
+            <TextBox Name="txtTr" Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="False" HorizontalAlignment="Left" Height="38" Margin="0,10,0,0" materialDesign:HintAssist.Hint="Tempo de retorno (anos)" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="168"/>
+        </GroupBox>
 
     </Grid>
 </Window>
