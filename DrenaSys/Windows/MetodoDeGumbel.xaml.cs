@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using DrenaSys.Models;
 
 namespace DrenaSys.Windows
 {
@@ -19,9 +10,21 @@ namespace DrenaSys.Windows
     /// </summary>
     public partial class MetodoDeGumbel : Window
     {
+        ObservableCollection<Precipitacao> listaP;
+        
         public MetodoDeGumbel()
         {
+            this.DataContext = this;
             InitializeComponent();
+            listaP = new ObservableCollection<Precipitacao>();
+            Precipitacao pre1 = new Precipitacao(10,100);
+            listaP.Add(pre1);
+            Precipitacao pre2 = new Precipitacao(15,100.15);
+            listaP.Add(pre2);
+            Precipitacao pre3 = new Precipitacao(15,100.58);
+            listaP.Add(pre3);
+            dataGrids.ItemsSource = listaP;
         }
+
     }
 }

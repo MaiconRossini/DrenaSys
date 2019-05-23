@@ -110,6 +110,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\HidroEquation.cs" />
+    <Compile Include="Models\Precipitacao.cs" />
     <Compile Include="Models\Utilities.cs" />
     <Compile Include="Windows\EquacoesDeChuva.xaml.cs">
       <DependentUpon>EquacoesDeChuva.xaml</DependentUpon>
