@@ -1,8 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:DrenaSys">
-    <Style x:Key="DefaultGrid" TargetType="Grid">
-        <Setter Property="Background" Value="{StaticResource PrimaryHueMidBrush}"/>
+    <Style x:Key="DataGridHeaderCenter" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource MaterialDesignGridColumnHeader}">
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
     </Style>
 
 

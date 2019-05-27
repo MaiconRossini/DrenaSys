@@ -16,10 +16,24 @@
         xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="DrenaSys v 0.01" Height="733" Width="1117" WindowStartupLocation="CenterScreen" Icon="pack://siteoforigin:,,,/Resources/MainIcon.ico" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
-    <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="573" Margin="10,114,0,0" VerticalAlignment="Top">
-            <DataGrid  x:Name="dataGrids" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="572" VerticalAlignment="Top" ItemsSource="{Binding listaP}">
+        Title="DrenaSys v 0.01 - Estudos Hidrológicos - Método de Gumbel (Subramanya &amp; Torrico)" Height="736" Width="732" WindowStartupLocation="CenterScreen" Icon="pack://siteoforigin:,,,/Resources/MainIcon.ico" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
+    <Grid Name="principal" MouseMove="Principal_MouseMove">
+        <materialDesign:Chip Margin="267,398,0,211" Width="438" Height="Auto">
+            <TextBlock TextWrapping="Wrap" TextAlignment="Justify">
+                O método de gumbel apresentado neste módulo é baseado em observações de Subramanya (2008), a conversão das chuvas de um dia para outros períodos com o intuito de gerar as curvas I.D.F, por sua vez, são baseadas no método das izozonas de Torrico.
+            </TextBlock>
+        </materialDesign:Chip>
+        <materialDesign:Chip Margin="10,10,0,656" Height="Auto" Width="211" IsEnabled="False">
+            <TextBlock Text="Precipitações Históricas" HorizontalAlignment="Center"></TextBlock>
+        </materialDesign:Chip>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="626" Margin="10,62,0,0" VerticalAlignment="Top">
+            <DataGrid  x:Name="dataGrids" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="606" VerticalAlignment="Top" ItemsSource="{Binding listaP}"  Margin="0,9,0,0">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
                 <DataGrid.BorderBrush>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Black" Offset="0"/>
@@ -27,14 +41,14 @@
                     </LinearGradientBrush>
                 </DataGrid.BorderBrush>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="Auto" Header="Ano" Binding="{Binding Ano, Mode=TwoWay}">
+                    <DataGridTextColumn Width="Auto" MinWidth="80" Header="Ano" Binding="{Binding Ano, Mode=TwoWay}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Width="Auto" Header="Maxima Anual" Binding="{Binding MaximaAnual, Mode=TwoWay}">
+                    <DataGridTextColumn Width="Auto" MinWidth="130" Header="Maxima Anual" Binding="{Binding MaximaAnual, Mode=TwoWay}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="HorizontalAlignment" Value="Center" />
@@ -44,5 +58,33 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
+        <GroupBox Header="Dados para cálculo da precipitação máxima" HorizontalAlignment="Left" Height="377" Margin="267,16,0,0" VerticalAlignment="Top" Width="438">
+            <Grid>
+                <TextBox FontSize="14" IsEnabled="False" Name="txtNumeroAmostras" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Número de amostras (N)" VerticalAlignment="Top" Width="196" Margin="0,65,0,0"/>
+                <TextBox FontSize="14" IsEnabled="False" x:Name="txtMedia" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Precipitação Média (mm)" VerticalAlignment="Top" Width="196" Margin="0,129,0,0"/>
+                <TextBox FontSize="14" IsEnabled="True" x:Name="txtTR" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Tempo de retorno (anos)" VerticalAlignment="Top" Width="196"/>
+                <TextBox FontSize="14" IsEnabled="False" x:Name="txtYt" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Parâmetro Yt" VerticalAlignment="Top" Width="196" Margin="224,0,0,0"/>
+                <TextBox FontSize="14" IsEnabled="False" x:Name="txtSn" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Parâmetro Sn" VerticalAlignment="Top" Width="196" Margin="0,257,0,0"/>
+                <TextBox FontSize="14" IsEnabled="False" x:Name="txtyn" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Parâmetro yn" VerticalAlignment="Top" Width="196" Margin="0,193,0,0"/>
+                <TextBox FontSize="14" IsEnabled="False" x:Name="txtK" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Parâmetro K" VerticalAlignment="Top" Width="196" Margin="224,65,0,0"/>
+                <TextBox FontSize="14" IsEnabled="False" x:Name="txtDp" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Desvio padrão (mm)" VerticalAlignment="Top" Width="196" Margin="224,129,0,0"/>
+                <TextBox FontSize="14" IsEnabled="False" x:Name="txtMaxPrecipt" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Precipitação máx. (mm)" VerticalAlignment="Top" Width="196" Margin="224,193,0,0"/>
+
+            </Grid>
+        </GroupBox>
+        <Button Name="btnExportReport" Click="BtnExportReport_Click" HorizontalAlignment="Left" Margin="342,515,0,0" VerticalAlignment="Top" Width="267" Height="39">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Export" Width="25" Height="25"/>
+                <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Exportar relatório completo</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Name="btnClearFields" Click="BtnClearFields_Click" HorizontalAlignment="Left" Margin="385,572,0,0" VerticalAlignment="Top" Width="184" Height="39">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Broom" Width="25" Height="25"/>
+                <TextBlock VerticalAlignment="Center" Margin="5 0 0 0"><Run Text="Resetar campos"/></TextBlock>
+            </StackPanel>
+        </Button>
+
+
     </Grid>
 </Window>

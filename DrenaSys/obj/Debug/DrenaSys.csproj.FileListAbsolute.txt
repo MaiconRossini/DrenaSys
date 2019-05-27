@@ -110,3 +110,9 @@ C:\DrenaSys\DrenaSys\obj\Debug\DrenaSys.exe
 C:\DrenaSys\DrenaSys\obj\Debug\DrenaSys.pdb
 C:\DrenaSys\DrenaSys\obj\Debug\Windows\MetodoDeGumbel.g.cs
 C:\DrenaSys\DrenaSys\obj\Debug\Windows\MetodoDeGumbel.baml
+C:\Users\Maicon Rossini\Documents\GitHub\DrenaSys\DrenaSys\obj\Debug\Windows\MetodoDeGumbel.g.cs
+C:\Users\Maicon Rossini\Documents\GitHub\DrenaSys\DrenaSys\obj\Debug\Windows\MetodoDeGumbel.baml
+C:\Users\Maicon Rossini\Documents\GitHub\DrenaSys\DrenaSys\obj\Debug\Windows\HUT.g.cs
+C:\Users\Maicon Rossini\Documents\GitHub\DrenaSys\DrenaSys\obj\Debug\Windows\HUT.baml
+C:\Users\Maicon Rossini\Documents\GitHub\DrenaSys\DrenaSys\bin\Debug\Resources\EquacoesChuva.xlsx
+C:\Users\Maicon Rossini\Documents\GitHub\DrenaSys\DrenaSys\obj\Debug\DrenaSys.csproj.ResolveComReference.cache

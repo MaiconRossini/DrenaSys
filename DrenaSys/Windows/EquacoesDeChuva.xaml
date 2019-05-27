@@ -16,7 +16,7 @@
         xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="DrenaSys v 0.01" Height="733" Width="1117" WindowStartupLocation="CenterScreen" Icon="pack://siteoforigin:,,,/Resources/MainIcon.ico" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
+        Title="DrenaSys v 0.01 - Estudos Hidrológicos - Método das Equações de chuva" Height="733" Width="1117" WindowStartupLocation="CenterScreen" Icon="pack://siteoforigin:,,,/Resources/MainIcon.ico" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
     <Grid Margin="0">
         <GroupBox Header="Selecione a equação de chuva desejada" HorizontalAlignment="Left" Height="463" Margin="10,10,0,0" VerticalAlignment="Top" Width="874">
             <gmaps:GMapControl Name="mapView" Zoom="13" MaxZoom="24" MinZoom="1"></gmaps:GMapControl>
@@ -55,7 +55,7 @@
                     <TextBlock Text="Resetar" VerticalAlignment="Center"  Margin="10 0 0 0"/>
                 </StackPanel>
             </Button>
-            <Button Name="btnExportReport" d:LayoutOverrides="Height" Margin="5 10 5 0">
+            <Button Name="btnExportReport" Click="BtnExportReport_Click" d:LayoutOverrides="Height" Margin="5 10 5 0">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Export" VerticalAlignment="Center" Height="25" Width="25"/>
                     <TextBlock Text="Exportar relatório" VerticalAlignment="Center"  Margin="5 0 0 0"/>

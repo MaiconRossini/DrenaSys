@@ -39,6 +39,12 @@ namespace DrenaSys
             MetodoDeGumbel mg = new MetodoDeGumbel();
             mg.Show();
         }
+
+        private void TreeChildHidrograma_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            HUT hut = new HUT();
+            hut.Show();
+        }
     }
 }
 

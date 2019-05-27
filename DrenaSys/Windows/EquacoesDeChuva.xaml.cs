@@ -3,6 +3,8 @@ using GMap.NET.WindowsPresentation;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -250,7 +252,42 @@ namespace DrenaSys.Windows
 
         }
 
+        private void BtnExportReport_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Relatório em XLS | *.xlsx";
+            save.Title = "Selecione o local para salvar o relatório";
+            if (pk.Text.Equals("") || pm.Text.Equals("") || to.Text.Equals("") || pn.Text.Equals("") || nomeCidade.Text.Equals("") || pm.Text.Equals(""))
+            {
+                System.Windows.Forms.MessageBox.Show("Para exportar o relatório no mínimo é necessário a inserção dos parâmetros I.D.F por seleção no mapa");
+            }
+            else
+            {
+                // Abre o dialogo
+                if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    //Copia a planilha padrão para a pasta selecionada
+                    string pastaSelecionada = System.IO.Path.GetDirectoryName(save.FileName);
+                    if (!File.Exists(save.FileName))
+                    {
+                        File.Copy(System.AppDomain.CurrentDomain.BaseDirectory + "Resources/EquacoesChuva.xlsx", save.FileName);
+                        System.Diagnostics.Process.Start(save.FileName);
 
+                    }
+                    else
+                    {
+                        File.Delete(save.FileName);
+                        File.Copy(System.AppDomain.CurrentDomain.BaseDirectory + "Resources/EquacoesChuva.xlsx", save.FileName);
+                        System.Diagnostics.Process.Start(save.FileName);
+                    }
+
+                }
+            }
+
+            
+
+
+        }
     }
     }
 
