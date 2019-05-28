@@ -356,5 +356,11 @@ namespace DrenaSys.Windows
         {
 
         }
+
+        private void BtnIzozonas_Click(object sender, RoutedEventArgs e)
+        {
+            Izozonas izo = new Izozonas();
+            izo.Show();
+        }
     }
 }

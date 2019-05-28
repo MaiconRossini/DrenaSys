@@ -194,11 +194,11 @@ namespace DrenaSys.Windows
                     {
                         case "Kirpich":
                             txtTempoFinal.Text = Convert.ToString(calculateTcByKirpich(txtTalv.Text, txtDesniv.Text) * 60);
-                            txtPrecipitacaoFinal.Text = Convert.ToString(this.calculateRain());
+                            txtPrecipitacaoFinal.Text = Convert.ToString((this.calculateRain()));
                             break;
                         case "Kirpich modificada":
                             txtTempoFinal.Text = Convert.ToString(calculateTcByKirpichModified(txtTalv.Text, txtDesniv.Text) * 60);
-                            txtPrecipitacaoFinal.Text = Convert.ToString(this.calculateRain());
+                            txtPrecipitacaoFinal.Text = Convert.ToString((this.calculateRain()));
                             break;
                     }
                 }
@@ -271,13 +271,85 @@ namespace DrenaSys.Windows
                     if (!File.Exists(save.FileName))
                     {
                         File.Copy(System.AppDomain.CurrentDomain.BaseDirectory + "Resources/EquacoesChuva.xlsx", save.FileName);
-                        System.Diagnostics.Process.Start(save.FileName);
 
+                        // Get the app
+                        Excel.Application app = new Excel.Application();
+
+                        // Run the process in hidden state
+                        app.Visible = false;
+
+                        // Open the workbook with given path
+                        Excel.Workbook workbook = app.Workbooks.Open(save.FileName, 0, false);
+
+                        //Open the worksheet with hardcoded integer number
+                        Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets[1];
+
+                        // Just insert and test
+                        worksheet.Cells[5, 10] = nomeCidade.Text;
+                        worksheet.Cells[6, 10] = pk.Text;
+                        worksheet.Cells[8, 10] = pm.Text;
+                        worksheet.Cells[7, 10] = pn.Text;
+                        worksheet.Cells[9, 10] = to.Text;
+                        worksheet.Cells[10, 10] = txtTalv.Text;
+                        worksheet.Cells[11, 10] = txtDesniv.Text;
+                        worksheet.Cells[12, 10] = cboxMetodos.Text;
+                        worksheet.Cells[13, 10] = txtTr.Text;
+                        worksheet.Cells[14, 10] = txtTempoFinal.Text;
+                        worksheet.Cells[1, 1] = txtPrecipitacaoFinal.Text;
+
+
+                        
+
+                        // Save the workbook
+                        workbook.Save();
+
+                        // Close the workbook
+                        workbook.Close(1);
+
+                        // Close the application - if it not got closed the upcoming open of this file will be readonly, pay attention
+                        app.Quit();
+                        System.Diagnostics.Process.Start(save.FileName);
                     }
                     else
                     {
                         File.Delete(save.FileName);
                         File.Copy(System.AppDomain.CurrentDomain.BaseDirectory + "Resources/EquacoesChuva.xlsx", save.FileName);
+                        // Get the app
+                        Excel.Application app = new Excel.Application();
+
+                        // Run the process in hidden state
+                        app.Visible = false;
+
+                        // Open the workbook with given path
+                        Excel.Workbook workbook = app.Workbooks.Open(save.FileName, 0, false);
+
+                        //Open the worksheet with hardcoded integer number
+                        Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets[1];
+
+                        // Just insert and test
+                        worksheet.Cells[5, 10] = nomeCidade.Text;
+                        worksheet.Cells[6, 10] = pk.Text;
+                        worksheet.Cells[8, 10] = pm.Text;
+                        worksheet.Cells[7, 10] = pn.Text;
+                        worksheet.Cells[9, 10] = to.Text;
+                        worksheet.Cells[10, 10] = txtTalv.Text;
+                        worksheet.Cells[11, 10] = txtDesniv.Text;
+                        worksheet.Cells[12, 10] = cboxMetodos.Text;
+                        worksheet.Cells[13, 10] = txtTr.Text;
+                        worksheet.Cells[14, 10] = txtTempoFinal.Text;
+                        worksheet.Cells[1, 1] = txtPrecipitacaoFinal.Text;
+
+
+
+
+                        // Save the workbook
+                        workbook.Save();
+
+                        // Close the workbook
+                        workbook.Close(1);
+
+                        // Close the application - if it not got closed the upcoming open of this file will be readonly, pay attention
+                        app.Quit();
                         System.Diagnostics.Process.Start(save.FileName);
                     }
 

@@ -36,9 +36,9 @@
         <GroupBox Header="Parâmetros I.D.F obtidos no mapa" HorizontalAlignment="Left" Height="187" Margin="286,492,0,0" VerticalAlignment="Top" Width="598">
             <Grid Height="102" VerticalAlignment="Top" Width="583">
                 <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True" Name="pk" HorizontalAlignment="Left" Height="45" Margin="10,10,0,0" materialDesign:HintAssist.Hint="Parâmetro k" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
-                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="pm" HorizontalAlignment="Left" Height="39" Margin="10,63,0,0" materialDesign:HintAssist.Hint="Parâmetro m" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="pn" HorizontalAlignment="Left" Height="39" Margin="10,63,0,0" materialDesign:HintAssist.Hint="Parâmetro n" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
                 <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="to" HorizontalAlignment="Left" Height="42" Margin="171,60,0,0" materialDesign:HintAssist.Hint="Parâmetro to" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
-                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="pn" HorizontalAlignment="Left" Height="45" Margin="171,10,0,0" materialDesign:HintAssist.Hint="Parâmetro n" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="pm" HorizontalAlignment="Left" Height="45" Margin="171,10,0,0" materialDesign:HintAssist.Hint="Parâmetro m" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="142"/>
                 <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"  Name="nomeCidade" HorizontalAlignment="Left" Height="45" Margin="334,34,0,0" materialDesign:HintAssist.Hint="Nome da estação selecionada" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="239"/>
             </Grid>
         </GroupBox>

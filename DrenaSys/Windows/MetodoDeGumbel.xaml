@@ -18,7 +18,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="DrenaSys v 0.01 - Estudos Hidrológicos - Método de Gumbel (Subramanya &amp; Torrico)" Height="736" Width="732" WindowStartupLocation="CenterScreen" Icon="pack://siteoforigin:,,,/Resources/MainIcon.ico" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
     <Grid Name="principal" MouseMove="Principal_MouseMove">
-        <materialDesign:Chip Margin="267,398,0,211" Width="438" Height="Auto">
+        <materialDesign:Chip IsEnabled="False" Margin="267,470,0,139" Width="438" Height="Auto">
             <TextBlock TextWrapping="Wrap" TextAlignment="Justify">
                 O método de gumbel apresentado neste módulo é baseado em observações de Subramanya (2008), a conversão das chuvas de um dia para outros períodos com o intuito de gerar as curvas I.D.F, por sua vez, são baseadas no método das izozonas de Torrico.
             </TextBlock>
@@ -58,7 +58,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
-        <GroupBox Header="Dados para cálculo da precipitação máxima" HorizontalAlignment="Left" Height="377" Margin="267,16,0,0" VerticalAlignment="Top" Width="438">
+        <GroupBox Header="Dados para cálculo da precipitação máxima" HorizontalAlignment="Left" Height="431" Margin="267,16,0,0" VerticalAlignment="Top" Width="438">
             <Grid>
                 <TextBox FontSize="14" IsEnabled="False" Name="txtNumeroAmostras" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Número de amostras (N)" VerticalAlignment="Top" Width="196" Margin="0,65,0,0"/>
                 <TextBox FontSize="14" IsEnabled="False" x:Name="txtMedia" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Precipitação Média (mm)" VerticalAlignment="Top" Width="196" Margin="0,129,0,0"/>
@@ -69,21 +69,38 @@
                 <TextBox FontSize="14" IsEnabled="False" x:Name="txtK" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Parâmetro K" VerticalAlignment="Top" Width="196" Margin="224,65,0,0"/>
                 <TextBox FontSize="14" IsEnabled="False" x:Name="txtDp" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Desvio padrão (mm)" VerticalAlignment="Top" Width="196" Margin="224,129,0,0"/>
                 <TextBox FontSize="14" IsEnabled="False" x:Name="txtMaxPrecipt" Padding="0" HorizontalContentAlignment="Center" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Precipitação máx. (mm)" VerticalAlignment="Top" Width="196" Margin="224,193,0,0"/>
+                <ComboBox FontSize="14" IsEnabled="True" Name="txtIzozona" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="45" materialDesign:HintAssist.Hint="Izozona de Torrico" VerticalAlignment="Top" Width="196" Margin="224,271,0,0">
+                    <ComboBoxItem>Izozona 'A'</ComboBoxItem>
+                    <ComboBoxItem>Izozona 'B'</ComboBoxItem>
+                    <ComboBoxItem>Izozona 'C'</ComboBoxItem>
+                    <ComboBoxItem>Izozona 'D'</ComboBoxItem>
+                    <ComboBoxItem>Izozona 'E'</ComboBoxItem>
+                    <ComboBoxItem>Izozona 'F'</ComboBoxItem>
+                    <ComboBoxItem>Izozona 'G'</ComboBoxItem>
+                    <ComboBoxItem>Izozona 'H'</ComboBoxItem>
+                </ComboBox>
 
             </Grid>
         </GroupBox>
-        <Button Name="btnExportReport" Click="BtnExportReport_Click" HorizontalAlignment="Left" Margin="342,515,0,0" VerticalAlignment="Top" Width="267" Height="39">
+        <Button Name="btnExportReport" Click="BtnExportReport_Click" HorizontalAlignment="Left" Margin="342,587,0,0" VerticalAlignment="Top" Width="267" Height="39">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Export" Width="25" Height="25"/>
                 <TextBlock VerticalAlignment="Center" Margin="5 0 0 0">Exportar relatório completo</TextBlock>
             </StackPanel>
         </Button>
-        <Button Name="btnClearFields" Click="BtnClearFields_Click" HorizontalAlignment="Left" Margin="385,572,0,0" VerticalAlignment="Top" Width="184" Height="39">
+        <Button Name="btnClearFields" Click="BtnClearFields_Click" HorizontalAlignment="Left" Margin="385,644,0,0" VerticalAlignment="Top" Width="184" Height="39">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Broom" Width="25" Height="25"/>
                 <TextBlock VerticalAlignment="Center" Margin="5 0 0 0"><Run Text="Resetar campos"/></TextBlock>
             </StackPanel>
         </Button>
+        <Button Name="btnIzozonas" Click="BtnIzozonas_Click" HorizontalAlignment="Left" Margin="354,392,0,0" VerticalAlignment="Top" Width="265">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="OpenInNew"/>
+                <TextBlock Text=" Ver mapa de izozonas (Torrico)"/>
+            </StackPanel>
+        </Button>
+
 
 
     </Grid>
