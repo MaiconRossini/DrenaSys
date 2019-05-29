@@ -117,4 +117,4 @@ C:\Users\Maicon Rossini\Documents\GitHub\DrenaSys\DrenaSys\obj\Debug\DrenaSys.cs
 C:\Users\Maicon Rossini\Documents\GitHub\DrenaSys\DrenaSys\obj\Debug\DrenaSys.csproj.CopyComplete
 C:\Users\Maicon Rossini\Documents\GitHub\DrenaSys\DrenaSys\obj\Debug\DrenaSys.exe
 C:\Users\Maicon Rossini\Documents\GitHub\DrenaSys\DrenaSys\obj\Debug\DrenaSys.pdb
-C:\Users\Maicon Rossini\Documents\GitHub\DrenaSys\DrenaSys\bin\Debug\Resources\torrico.png
+C:\Users\Maicon Rossini\Documents\GitHub\DrenaSys\DrenaSys\obj\Debug\DrenaSys.csprojAssemblyReference.cache
